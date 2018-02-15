@@ -27,7 +27,9 @@ class PsrContainerFactory
         elseif ($data instanceOf ContainerInterface) {
             return $data;
         }
-
+        elseif ($data instanceOf \StdClass) {
+            return new PsrContainer( new PimpleContainer((array) $data) );
+        }
         throw new \InvalidArgumentException( "Expected array, Pimple Container, or PSR ContainerInterface");
     }
 }
