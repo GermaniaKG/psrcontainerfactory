@@ -11,13 +11,15 @@ class PsrContainerFactoryTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider provideValidCtorArguments
      */
-    public function testSimple( $data )
+    public function testSimple( $data, $key, $expected_value )
     {
         $sut = new PsrContainerFactory;
 
         $result = $sut( $data );
 
         $this->assertInstanceOf( ContainerInterface::class, $result );
+        $this->assertEquals($expected_value, $result->get($key));
+        $this->assertTrue($result->has($key));
     }
 
 
@@ -38,12 +40,15 @@ class PsrContainerFactoryTest extends \PHPUnit\Framework\TestCase
     public function provideValidCtorArguments()
     {
         $container_mock = $this->prophesize( ContainerInterface::class );
+        $container_mock->get('foo')->willReturn('bar');
+        $container_mock->has('foo')->willReturn(true);
         $container = $container_mock->reveal();
 
         return array(
-            [ $container ],
-            [ array() ],
-            [ new PimpleContainer ]
+            [ $container, "foo", "bar" ],
+            [ (object) array('foo' => 'bar'), "foo", "bar" ],
+            [ array('foo' => 'bar'), "foo", "bar" ],
+            [ new PimpleContainer(array('foo' => 'bar')), "foo", "bar" ]
         );
     }
 
@@ -55,7 +60,7 @@ class PsrContainerFactoryTest extends \PHPUnit\Framework\TestCase
             [ null ],
             [ true ],
             [ false ],
-            [ new \StdClass ]
+            [ new \DateTime ]
         );
     }
 
