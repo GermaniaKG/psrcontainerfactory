@@ -6,13 +6,7 @@ build:
         before:
             - rm composer.lock
 
-    services:
-        mysql: 5.7
-
     tests:
-        before:
-            - mysql -h 127.0.0.1 -u root -e 'create database test'
-
         override:
             -
                 command: 'vendor/bin/phpunit --coverage-clover=coverage'
