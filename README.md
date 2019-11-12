@@ -15,6 +15,23 @@
 $ composer require germania-kg/psrcontainerfactory
 ```
 
+## Usage
+
+The callable accepts *arrays*, StdClass *objects*, instances of *ContainerInterface* and *PimpleContainer*.
+
+```php
+<?php
+use Germania\PsrContainerFactory\PsrContainerFactory;
+use Psr\Container\ContainerInterface;
+
+$psr11 = (new PsrContainerFactory)([
+	'foo' => 'bar'
+]);
+// yay!
+echo ($psr_11 instanceOf ContainerInterface) ? "yay!" : "noe?";
+```
+
+
 
 ## Issues
 
