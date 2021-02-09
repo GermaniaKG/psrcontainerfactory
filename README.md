@@ -15,9 +15,16 @@
 $ composer require germania-kg/psrcontainerfactory
 ```
 
+The PsrContainerFactory works with both **Pimple DIC** or **PHP-DI.** One of these must be installed. – N.B. that Pimple has aged and PHP-DI has evolved becoming kind of the DI library standard.
+
+```bash
+$ composer require php-di/php-di
+$ composer require pimple/pimple
+```
+
 ## Usage
 
-The callable accepts *arrays*, StdClass *objects*, instances of *ContainerInterface* and *PimpleContainer*.
+The callable accepts *arrays*, StdClass *objects* and other instances of *ContainerInterface*.
 
 ```php
 <?php

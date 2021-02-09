@@ -1,44 +1,45 @@
 {
-	"name": "germania-kg/psrcontainerfactory",
-	"description": "Factory callable that creates and returns a Pimple PSR-11 Container",
+    "name": "germania-kg/psrcontainerfactory",
+    "description": "Factory callable that creates and returns a Pimple PSR-11 Container",
 
-	"license": "MIT",
+    "license": "MIT",
 
-	"authors": [
-		{
-			"name": "Carsten Witt",
-			"email": "carstenwitt@germania-kg.de",
-			"role": "Developer"
-		}
-	],
+    "authors": [{
+        "name": "Carsten Witt",
+        "email": "carstenwitt@germania-kg.de",
+        "role": "Developer"
+    }],
 
-	"autoload": {
-		"psr-4": {
-			"Germania\\PsrContainerFactory\\": "src/"
-		}
-	},
+    "autoload": {
+        "psr-4": {
+            "Germania\\PsrContainerFactory\\": "src/"
+        }
+    },
 
-  "autoload-dev": {
-      "psr-4": { "tests\\": "tests/src" }
-  },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests/src"
+        }
+    },
 
-  "require": {
-  	"php": "^5.6|^7.0|^8.0",
-  	"pimple/pimple": "^3.0",
-  	"psr/container": "^1.0"
-  },
+    "require": {
+        "php": "^5.6|^7.0|^8.0",
+        "psr/container": "^1.0"
+    },
 
     "require-dev": {
+        "php-di/php-di": "^6.3",
+        "pimple/pimple": "^3.0",
         "php-coveralls/php-coveralls": "^2.0",
         "phpunit/phpunit": "^9.0",
         "phpspec/prophecy-phpunit": "^2.0"
     },
 
     "scripts": {
-          "phpunit": "phpunit",
+        "phpunit": "phpunit",
 
-          "test": [
-              "@phpunit"
-          ]
+        "test": [
+            "@phpunit"
+        ]
     }
 }
